@@ -1,0 +1,56 @@
+
+
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div *ngFor="let tab of config?.field_groups; trackBy: trackByGroup" class="card mb-4">
+		<div class="card-body">
+			<h5 class="card-title text-center">{{tab.label}}</h5>
+
+			<div class="row">
+				<div *ngFor="let field of tab.fields; trackBy: trackByField" class="form-group col-auto" [ngClass]="field.metadata.class">
+					<label [for]="field.slug">{{field.label}}</label>
+
+					<ng-container [ngSwitch]="field.type">
+						<select *ngSwitchCase="fieldTypes.DROPDOWN"
+						        [id]="field.slug"
+						        [formControlName]="field.slug"
+						        [class.is-invalid]="isInvalidField(field.slug)"
+						        [ngStyle]="field.meta_data?.style"
+						        class="custom-select"
+						>
+							<option value="" disabled selected>{{field.placeholder}}</option>
+							<option *ngFor="let option of field.datasource.options" [value]="option.slug">{{option.label}}</option>
+						</select>
+
+						<div *ngSwitchCase="fieldTypes.DATE" class="input-group">
+							<input type="text"
+							       class="form-control"
+							       [placeholder]="field.placeholder"
+							       [id]="field.slug"
+							       [formControlName]="field.slug"
+							       [class.is-invalid]="isInvalidField(field.slug)"
+							       ngbDatepicker
+							       #d="ngbDatepicker"
+							       [ngStyle]="field.meta_data?.style"
+							>
+							<div class="input-group-append">
+								<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+									<fa-icon [icon]="faCalendarAlt"></fa-icon>
+								</button>
+							</div>
+						</div>
+
+						<div *ngIf="isInvalidField(field.slug)" class="invalid-feedback">
+							<div>{{form.get(field.slug).errors | errorMessage}}</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<button type="submit" class="btn btn-primary">Save</button>
+	</div>
+</form>
+
+

@@ -8,9 +8,11 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { faCalendar, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { FieldEnum, FormField, FormTabConfig, SourceEnum } from '../../models';
-import { FormHelperService } from '../../services/form-helper.service';
+import { FormHelperService } from '../../../services/form-helper.service';
+import { DynamicFormService } from './dynamic-form.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -22,6 +24,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() config: FormTabConfig;
   @Input() data;
   @Output() formData = new EventEmitter();
+  faCalendarAlt = faCalendarAlt;
 
   form: FormGroup;
   fieldTypes: typeof FieldEnum = FieldEnum;
@@ -29,7 +32,8 @@ export class DynamicFormComponent implements OnInit, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-    private formHelperService: FormHelperService
+    private formHelperService: FormHelperService,
+    private service: DynamicFormService
   ) {
   }
 
@@ -72,12 +76,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   private initForm() {
-    const config = {};
-    this.config.field_groups.forEach(group => {
-      group.fields.forEach(field => {
-        config[field.slug] = this.fb.control('', field.is_required ? Validators.required : null);
-      });
-    });
+    const config = this.service.getFormConfig(this.config.field_groups);
     this.form = this.fb.group(config);
   }
 

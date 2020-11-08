@@ -1,24 +1,22 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { TabsComponent } from './pages/tabs/tabs.component';
+import { DynamicFormModule } from './shared/components/dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DynamicFormComponent,
     TabsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    DynamicFormModule
   ],
   providers: [],
   bootstrap: [AppComponent]

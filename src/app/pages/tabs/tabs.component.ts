@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { FormTabConfig } from '../../models';
 import { FormConfigDataService } from '../../services/form-config-data.service';
 import { StorageService } from '../../services/storage.service';
+import { FormTabConfig } from '../../shared/models';
 
 @Component({
   selector: 'app-tabs',
@@ -35,6 +35,8 @@ export class TabsComponent implements OnInit, OnDestroy {
   onFormData(data) {
     this.storageService.saveFormData(data)
       .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe();
+      .subscribe(() => {
+        alert('Data saved successfully!');
+      });
   }
 }
