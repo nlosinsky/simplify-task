@@ -1,4 +1,7 @@
 <div class="form-container">
-	<app-dynamic-form [config]="tab$ | async"></app-dynamic-form>
+	<app-dynamic-form [config]="tab$ | async"
+	                  [data]="formData$ | async"
+	                  (formData)="onFormData($event)"
+	></app-dynamic-form>
 </div>
 

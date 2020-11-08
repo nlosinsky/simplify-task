@@ -20,6 +20,7 @@ import { FormHelperService } from '../../services/form-helper.service';
 })
 export class DynamicFormComponent implements OnInit, OnChanges {
   @Input() config: FormTabConfig;
+  @Input() data;
   @Output() formData = new EventEmitter();
 
   form: FormGroup;
@@ -33,12 +34,15 @@ export class DynamicFormComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log(this.fieldTypes, FieldEnum);
   }
 
-  ngOnChanges({config}: SimpleChanges): void {
+  ngOnChanges({config, data}: SimpleChanges): void {
     if (config && config.currentValue) {
       this.initForm();
+    }
+
+    if (data && data.currentValue) {
+      this.setFormData();
     }
   }
 
@@ -55,6 +59,7 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       this.formHelperService.setAllControlsDirty(this.form.controls);
       return;
     }
+    this.formData.emit(this.form.value);
   }
 
   isInvalidField(fieldName: string): boolean {
@@ -74,5 +79,16 @@ export class DynamicFormComponent implements OnInit, OnChanges {
       });
     });
     this.form = this.fb.group(config);
+  }
+
+  private setFormData() {
+    const obj = {};
+    Object.keys(this.form.controls).forEach(key => {
+      if (this.data[key]) {
+        obj[key] = this.data[key];
+      }
+    });
+
+    this.form.patchValue(obj);
   }
 }
