@@ -28,7 +28,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -91,6 +91,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "styles": [
               "src/styles.scss"
             ],
@@ -123,6 +128,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "simplify-task"
+    }
+  },
+  "defaultProject": "simplify-task",
+  "cli": {
+    "analytics": false
+  }
 }

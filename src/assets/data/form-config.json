@@ -1,0 +1,312 @@
+{
+  "config": {
+    "nav_tabs": [
+      {
+        "label": "Basic Info",
+        "field_groups": []
+      },
+      {
+        "label": "Assignment",
+        "field_groups": [
+          {
+            "label": "Assignment Association",
+            "fields": [
+              {
+                "id": "sourcing_model",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Assignment Sourcing Model",
+                "slug": "sourcing_model",
+                "placeholder": "SOW",
+                "datasource": {
+                  "options": [
+                    {
+                      "id": "dd84f65a-6a28-42f3-85cd-9991a01049f0",
+                      "slug": "contigent",
+                      "label": "Contigent"
+                    },
+                    {
+                      "id": "ee21ce38-2c1a-4056-9254-837fd1ba99cc",
+                      "slug": "sow",
+                      "label": "SOW"
+                    }
+                  ]
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-100"
+                }
+              },
+              {
+                "id": "job_id",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Job/SOW Project",
+                "slug": "job_id",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": false,
+                "metadata": {
+                  "class": "width-100"
+                }
+              },
+              {
+                "id": "hierarchy",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Hierarchy",
+                "slug": "hierarchy_id",
+                "placeholder": "Choose Hierarchy",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-100"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Assignment Information",
+            "fields": [
+              {
+                "id": "assignment_title",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Assignment Title",
+                "slug": "assignment_title",
+                "placeholder": "Java Developer Job",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-100"
+                }
+              },
+              {
+                "id": "experience_level",
+                "source": "CUSTOM",
+                "type": "DROPDOWN",
+                "label": "Experience Level",
+                "slug": "job_level",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "meta_data": {
+                  "min_length": 5,
+                  "max_length": 100,
+                  "pattern": false,
+                  "style": {
+                    "background": "#fff"
+                  }
+                },
+                "is_required": false,
+                "metadata": {
+                  "class": "width-100"
+                }
+              },
+              {
+                "id": "work_location",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Work Location",
+                "slug": "work_location",
+                "placeholder": "Enter Work Location",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "assignment_manager",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Assignment Manager",
+                "slug": "assignment_manager",
+                "placeholder": "Select Assignment Manager",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "start_date",
+                "source": "SYSTEM",
+                "type": "DATE",
+                "label": "Start Date",
+                "slug": "start_date",
+                "placeholder": "Choose Date",
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "end_date",
+                "source": "SYSTEM",
+                "type": "DATE",
+                "label": "End Date",
+                "slug": "end_date",
+                "placeholder": "Choose Date",
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "original_start_date",
+                "source": "SYSTEM",
+                "type": "DATE",
+                "label": "Worker Original Start Date",
+                "slug": "original_start_date",
+                "placeholder": "Choose Date",
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "job_hire_type",
+                "source": "SYSTEM",
+                "type": "DROPDOWN",
+                "label": "Hire Type",
+                "slug": "job_hire_type",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "is_required": false,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "shift_timing",
+                "source": "CUSTOM",
+                "type": "DROPDOWN",
+                "label": "Shift Timing",
+                "slug": "shift_timing",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "meta_data": {
+                  "min_length": 5,
+                  "max_length": 100,
+                  "pattern": false,
+                  "style": {
+                    "background": "#fff"
+                  }
+                },
+                "is_required": false,
+                "metadata": {
+                  "class": "width-50"
+                }
+              }
+            ]
+          },
+          {
+            "label": "Foundation Details & Custom Fields",
+            "fields": [
+              {
+                "id": "cost_center",
+                "source": "CUSTOM",
+                "type": "DROPDOWN",
+                "label": "Cost Center",
+                "slug": "cost_center",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "meta_data": {
+                  "min_length": 5,
+                  "max_length": 100,
+                  "pattern": false,
+                  "style": {
+                    "background": "#fff"
+                  }
+                },
+                "is_required": false,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "gl_code",
+                "source": "CUSTOM",
+                "type": "DROPDOWN",
+                "label": "GL Code",
+                "slug": "gl_code",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "meta_data": {
+                  "min_length": 5,
+                  "max_length": 100,
+                  "pattern": false,
+                  "style": {
+                    "background": "#fff"
+                  }
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              },
+              {
+                "id": "business_unit",
+                "source": "CUSTOM",
+                "type": "DROPDOWN",
+                "label": "Business Unit",
+                "slug": "business_unit",
+                "placeholder": "Select",
+                "datasource": {
+                  "options": [
+                  ]
+                },
+                "meta_data": {
+                  "min_length": 5,
+                  "max_length": 100,
+                  "pattern": false,
+                  "style": {
+                    "background": "#fff"
+                  }
+                },
+                "is_required": true,
+                "metadata": {
+                  "class": "width-50"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Finance Tab",
+        "field_groups": []
+      }
+    ]
+  }
+}
